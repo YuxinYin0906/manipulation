@@ -134,3 +134,36 @@ pups_data%>%
     ## 2 #1/2/95/2         2       4      13        7      10
     ## 3 #1/2/95/2         2       5      13        8      10
     ## # ℹ 124 more rows
+
+## Mutate: add a new column/variable, making change to the existing cols
+
+``` r
+mutate(litters_data,
+  wt_gain = gd18_weight - gd0_weight,
+  group = str_to_lower(group) #uppercase to lower case
+)
+```
+
+    ## # A tibble: 49 × 9
+    ##   group litter_number gd0_weight gd18_weight gd_of_birth pups_born_alive
+    ##   <chr> <chr>              <dbl>       <dbl>       <int>           <int>
+    ## 1 con7  #85                 19.7        34.7          20               3
+    ## 2 con7  #1/2/95/2           27          42            19               8
+    ## 3 con7  #5/5/3/83/3-3       26          41.4          19               6
+    ## # ℹ 46 more rows
+    ## # ℹ 3 more variables: pups_dead_birth <int>, pups_survive <int>, wt_gain <dbl>
+
+### Assessment 3
+
+``` r
+pups_data%>%
+  mutate(pd_difference = pd_pivot - 7)
+```
+
+    ## # A tibble: 313 × 7
+    ##   litter_number   sex pd_ears pd_eyes pd_pivot pd_walk pd_difference
+    ##   <chr>         <int>   <int>   <int>    <int>   <int>         <dbl>
+    ## 1 #85               1       4      13        7      11             0
+    ## 2 #85               1       4      13        7      12             0
+    ## 3 #1/2/95/2         1       5      13        7       9             0
+    ## # ℹ 310 more rows

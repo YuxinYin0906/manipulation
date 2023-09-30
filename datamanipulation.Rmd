@@ -71,3 +71,20 @@ pups_data%>%
   filter(pd_walk < 11 & sex == 2)
 ```
 
+
+## Mutate: add a new column/variable, making change to the existing cols
+
+```{r}
+mutate(litters_data,
+  wt_gain = gd18_weight - gd0_weight,
+  group = str_to_lower(group) #uppercase to lower case
+)
+```
+
+### Assessment 3
+
+```{r}
+pups_data%>%
+  mutate(pd_difference = pd_pivot - 7)
+```
+
