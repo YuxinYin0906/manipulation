@@ -4,3 +4,49 @@ output: github_document
 date: "2023-09-30"
 ---
 
+```{r}
+library(tidyverse)
+options(tibble.print_min = 3)
+
+litters_data = read_csv("./Data/FAS_litters.csv",
+  col_types = "ccddiiii")
+
+##When you specify col_types like this, it helps the data reading function understand how to interpret the data in the file correctly
+
+litters_data = janitor::clean_names(litters_data)  #clean up the names to R-accepted format
+
+
+pups_data = read_csv("./Data/FAS_pups.csv",
+  col_types = "ciiiii")
+pups_data = janitor::clean_names(pups_data)
+
+```
+
+
+
+## Select: select Columns
+
+
+```{r}
+select(litters_data, group, litter_number, gd0_weight, pups_born_alive)
+```
+
+
+### Select suffixes or similar patterns columns
+```{r}
+select(litters_data, starts_with("gd"))
+```
+
+### Selct with `everything` function to reorganize the order of cols without discarding anything
+
+```{r}
+select(litters_data, litter_number, pups_survive, everything())
+```
+
+
+#### Assessment
+
+```{r}
+select(pups_data, litter_number, sex, pd_ears)
+```
+
