@@ -89,3 +89,48 @@ select(pups_data, litter_number, sex, pd_ears)
     ## 2 #85               1       4
     ## 3 #1/2/95/2         1       5
     ## # ℹ 310 more rows
+
+## Filter
+
+### Omitting value: `drop_na`
+
+``` r
+drop_na(litters_data)
+```
+
+    ## # A tibble: 31 × 8
+    ##   group litter_number gd0_weight gd18_weight gd_of_birth pups_born_alive
+    ##   <chr> <chr>              <dbl>       <dbl>       <int>           <int>
+    ## 1 Con7  #85                 19.7        34.7          20               3
+    ## 2 Con7  #1/2/95/2           27          42            19               8
+    ## 3 Con7  #5/5/3/83/3-3       26          41.4          19               6
+    ## # ℹ 28 more rows
+    ## # ℹ 2 more variables: pups_dead_birth <int>, pups_survive <int>
+
+### Assessment 2: filter
+
+``` r
+pups_data%>%
+  filter(sex == 1)
+```
+
+    ## # A tibble: 155 × 6
+    ##   litter_number   sex pd_ears pd_eyes pd_pivot pd_walk
+    ##   <chr>         <int>   <int>   <int>    <int>   <int>
+    ## 1 #85               1       4      13        7      11
+    ## 2 #85               1       4      13        7      12
+    ## 3 #1/2/95/2         1       5      13        7       9
+    ## # ℹ 152 more rows
+
+``` r
+pups_data%>%
+  filter(pd_walk < 11 & sex == 2)
+```
+
+    ## # A tibble: 127 × 6
+    ##   litter_number   sex pd_ears pd_eyes pd_pivot pd_walk
+    ##   <chr>         <int>   <int>   <int>    <int>   <int>
+    ## 1 #1/2/95/2         2       4      13        7       9
+    ## 2 #1/2/95/2         2       4      13        7      10
+    ## 3 #1/2/95/2         2       5      13        8      10
+    ## # ℹ 124 more rows
